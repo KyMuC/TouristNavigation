@@ -29,10 +29,6 @@ struct ARViewContainer: UIViewRepresentable {
         // Add the box anchor to the scene
         //arView.scene.anchors.append(boxAnchor)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            arView.rayCastingFunction(point: CGPoint(x: 0.5, y: 0.5))
-        }
-        
         return arView
         
     }
@@ -42,6 +38,22 @@ struct ARViewContainer: UIViewRepresentable {
 }
 
 extension ARView {
+    
+    func setupGestures() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        
+        guard let touchInView = sender?.location(in: self) else {
+            return
+        }
+        
+        rayCastingFunction(point: touchInView)
+        _ = self.entities(at: touchInView)
+        
+    }
     
     func rayCastingFunction(point: CGPoint) {
         
