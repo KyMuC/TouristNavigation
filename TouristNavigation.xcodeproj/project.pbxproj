@@ -16,6 +16,7 @@
 		13F12EC7264C323C005CC2DB /* StickyNoteEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F12EC6264C323C005CC2DB /* StickyNoteEntity.swift */; };
 		13F12ECA264C32AB005CC2DB /* ScreenSpaceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F12EC9264C32AB005CC2DB /* ScreenSpaceComponent.swift */; };
 		13F12ECD264C37C8005CC2DB /* StickyNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F12ECC264C37C8005CC2DB /* StickyNoteView.swift */; };
+		4B76E349264DCFC200B5CB6C /* CustomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76E348264DCFC200B5CB6C /* CustomEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		13F12EC6264C323C005CC2DB /* StickyNoteEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyNoteEntity.swift; sourceTree = "<group>"; };
 		13F12EC9264C32AB005CC2DB /* ScreenSpaceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSpaceComponent.swift; sourceTree = "<group>"; };
 		13F12ECC264C37C8005CC2DB /* StickyNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyNoteView.swift; sourceTree = "<group>"; };
+		4B76E348264DCFC200B5CB6C /* CustomEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				13F12ECC264C37C8005CC2DB /* StickyNoteView.swift */,
+				4B76E348264DCFC200B5CB6C /* CustomEntity.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				13F12ECD264C37C8005CC2DB /* StickyNoteView.swift in Sources */,
 				13F12EC4264BFAB0005CC2DB /* ObjectDetectionService.swift in Sources */,
 				132F4D1B264B3EFF00EC743F /* Experience.rcproject in Sources */,
+				4B76E349264DCFC200B5CB6C /* CustomEntity.swift in Sources */,
 				13F12ECA264C32AB005CC2DB /* ScreenSpaceComponent.swift in Sources */,
 				13F12EC7264C323C005CC2DB /* StickyNoteEntity.swift in Sources */,
 			);
@@ -321,14 +325,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TouristNavigation/Preview Content\"";
-				DEVELOPMENT_TEAM = GQ2A475C8K;
+				DEVELOPMENT_TEAM = 7KMB8NCR6F;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TouristNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.kymuc.TouristNavigation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adsoshnikov.TouristNavigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -342,14 +346,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TouristNavigation/Preview Content\"";
-				DEVELOPMENT_TEAM = GQ2A475C8K;
+				DEVELOPMENT_TEAM = 7KMB8NCR6F;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TouristNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.kymuc.TouristNavigation;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adsoshnikov.TouristNavigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

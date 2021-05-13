@@ -63,14 +63,23 @@ extension ARView{
         
         let transformation = Transform(matrix: result.worldTransform)
         
-        let note = StickyNoteEntity(classification: "Index")
+//        let note = StickyNoteEntity(classification: "Index")
+//
+//        note.transform = transformation
+//
+//        let raycastAnchor = AnchorEntity(raycastResult: result)
+//        raycastAnchor.addChild(note)
+//
+//        self.scene.addAnchor(raycastAnchor)
 
-        note.transform = transformation
-        
-        let raycastAnchor = AnchorEntity(raycastResult: result)
-        raycastAnchor.addChild(note)
-        
-        self.scene.addAnchor(raycastAnchor)
+            let box = CustomEntityA(color: .yellow)
+            self.installGestures(.all, for: box)
+            box.transform = transformation
+
+            let raycastAnchor = AnchorEntity(raycastResult: result)
+            raycastAnchor.addChild(box)
+
+            self.scene.addAnchor(raycastAnchor)
     }
 }
 
