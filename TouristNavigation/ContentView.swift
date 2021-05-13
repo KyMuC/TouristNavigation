@@ -20,33 +20,24 @@ struct ARViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
-        //let imageBuffer : CVImageBuffer = arView.session.currentFrame!.capturedImage
-        
-        //arView.
         
         let config = ARWorldTrackingConfiguration()
-        //config.planeDetection = .horizontal
+        config.planeDetection = [.horizontal, .vertical]
         arView.session.run(config, options: [])
         
+        arView.addCoaching()
         arView.setupGestures()
-        
-        // Load the "Box" scene from the "Experience" Reality File
-        //let boxAnchor = try! Experience.loadBox()
-        
-        // Add the box anchor to the scene
-        //arView.scene.anchors.append(boxAnchor)
-        
         return arView
         
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {}
-    
 }
 
-extension ARView {
+extension ARView{
     
     func setupGestures() {
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.addGestureRecognizer(tap)
     }
@@ -57,36 +48,51 @@ extension ARView {
             return
         }
         
-        rayCastingFunction(point: touchInView)
-        let entities = self.entities(at: touchInView)
-        
+        rayCastingMethod(point: touchInView)
     }
     
-    func rayCastingFunction(point: CGPoint) {
+    func rayCastingMethod(point: CGPoint) {
         
         guard let raycastQuery = self.makeRaycastQuery(from: point,
                                                        allowing: .existingPlaneInfinite,
                                                        alignment: .any) else {
-            print("failed first")
             return
         }
         
-        guard let result = self.session.raycast(raycastQuery).first else {
-            print("failed")
-            return
-        }
+        guard let result = self.session.raycast(raycastQuery).first else {return}
         
         let transformation = Transform(matrix: result.worldTransform)
         
-        let stickyNote = StickyNoteEntity(classification: "Index")
-        
-        stickyNote.transform = transformation
+        let note = StickyNoteEntity(classification: "Index")
+
+        note.transform = transformation
         
         let raycastAnchor = AnchorEntity(raycastResult: result)
-        raycastAnchor.addChild(stickyNote)
+        raycastAnchor.addChild(note)
+        
         self.scene.addAnchor(raycastAnchor)
     }
 }
+
+extension ARView: ARCoachingOverlayViewDelegate {
+    
+    func addCoaching() {
+        
+        let coachingOverlay = ARCoachingOverlayView()
+        coachingOverlay.delegate = self
+        coachingOverlay.session = self.session
+        coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        coachingOverlay.goal = .horizontalPlane
+        self.addSubview(coachingOverlay)
+    }
+    
+    public func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+        coachingOverlayView.activatesAutomatically = false
+    }
+    
+}
+
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
