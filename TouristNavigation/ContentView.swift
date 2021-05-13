@@ -25,7 +25,7 @@ struct ARViewContainer: UIViewRepresentable {
         //arView.
         
         let config = ARWorldTrackingConfiguration()
-        config.planeDetection = .horizontal
+        //config.planeDetection = .horizontal
         arView.session.run(config, options: [])
         
         arView.setupGestures()
@@ -58,7 +58,7 @@ extension ARView {
         }
         
         rayCastingFunction(point: touchInView)
-        _ = self.entities(at: touchInView)
+        let entities = self.entities(at: touchInView)
         
     }
     
@@ -66,7 +66,7 @@ extension ARView {
         
         guard let raycastQuery = self.makeRaycastQuery(from: point,
                                                        allowing: .existingPlaneInfinite,
-                                                       alignment: .horizontal) else {
+                                                       alignment: .any) else {
             print("failed first")
             return
         }
