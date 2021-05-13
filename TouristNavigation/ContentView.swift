@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealityKit
+import ARKit
 
 struct ContentView : View {
     var body: some View {
@@ -22,6 +23,12 @@ struct ARViewContainer: UIViewRepresentable {
         //let imageBuffer : CVImageBuffer = arView.session.currentFrame!.capturedImage
         
         //arView.
+        
+        let config = ARWorldTrackingConfiguration()
+        config.planeDetection = .horizontal
+        arView.session.run(config, options: [])
+        
+        arView.setupGestures()
         
         // Load the "Box" scene from the "Experience" Reality File
         //let boxAnchor = try! Experience.loadBox()
