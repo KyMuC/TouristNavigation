@@ -17,6 +17,8 @@ struct ContentView : View {
 
 struct ARViewContainer: UIViewRepresentable {
     
+    let objectDetectionService = ObjectDetectionService()
+    
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
@@ -26,7 +28,25 @@ struct ARViewContainer: UIViewRepresentable {
         arView.session.run(config, options: [])
         
         arView.addCoaching()
-        arView.setupGestures()
+        //arView.setupGestures()
+        
+        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
+            guard let capturedImage = arView.session.currentFrame?.capturedImage else { return }
+            objectDetectionService.detect(on: .init(pixelBuffer: capturedImage)) {
+                [weak self] result in
+                
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(let response):
+                    arView.rayCastingMethod(classification: response.classification, point: response.centerPoint)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    break
+                }
+            }
+        }
+        
         return arView
         
     }
@@ -48,10 +68,10 @@ extension ARView{
             return
         }
         
-        rayCastingMethod(point: touchInView)
+        rayCastingMethod(classification: "Index", point: touchInView)
     }
     
-    func rayCastingMethod(point: CGPoint) {
+    func rayCastingMethod(classification: String, point: CGPoint) {
         
         guard let raycastQuery = self.makeRaycastQuery(from: point,
                                                        allowing: .existingPlaneInfinite,
@@ -63,23 +83,23 @@ extension ARView{
         
         let transformation = Transform(matrix: result.worldTransform)
         
-//        let note = StickyNoteEntity(classification: "Index")
-//
-//        note.transform = transformation
-//
-//        let raycastAnchor = AnchorEntity(raycastResult: result)
-//        raycastAnchor.addChild(note)
-//
-//        self.scene.addAnchor(raycastAnchor)
-
-            let box = CustomEntityA(color: .yellow)
-            self.installGestures(.all, for: box)
-            box.transform = transformation
-
-            let raycastAnchor = AnchorEntity(raycastResult: result)
-            raycastAnchor.addChild(box)
-
-            self.scene.addAnchor(raycastAnchor)
+        //        let note = StickyNoteEntity(classification: "Index")
+        //
+        //        note.transform = transformation
+        //
+        //        let raycastAnchor = AnchorEntity(raycastResult: result)
+        //        raycastAnchor.addChild(note)
+        //
+        //        self.scene.addAnchor(raycastAnchor)
+        
+        let note = TextEntity(classification: classification)
+        self.installGestures(.all, for: note)
+        note.transform = transformation
+        
+        let raycastAnchor = AnchorEntity(raycastResult: result)
+        raycastAnchor.addChild(note)
+        
+        self.scene.addAnchor(raycastAnchor)
     }
 }
 

@@ -11,11 +11,11 @@ import RealityKit
 import Combine
 import ARKit
 
-class CustomEntityA: Entity, HasModel, HasAnchoring, HasCollision {
+class TextEntity: Entity, HasModel, HasAnchoring, HasCollision {
     
     var collisionSubs: [Cancellable] = []
     
-    required init(color: UIColor) {
+    required init(classification: String) {
         super.init()
         
 //        self.components[CollisionComponent] = CollisionComponent(
@@ -26,13 +26,13 @@ class CustomEntityA: Entity, HasModel, HasAnchoring, HasCollision {
         
         
         self.components[ModelComponent] = ModelComponent(
-            mesh: .generateText("", extrusionDepth: TextElements().extrusionDepth, font: TextElements().font, containerFrame: .zero, alignment: .center, lineBreakMode: .byTruncatingTail),
+            mesh: .generateText(classification, extrusionDepth: TextElements().extrusionDepth, font: TextElements().font, containerFrame: .zero, alignment: .center, lineBreakMode: .byTruncatingTail),
             materials: [SimpleMaterial(color: TextElements().colour, isMetallic: false)]
         )
     }
     
-    convenience init(color: UIColor, position: SIMD3<Float>) {
-        self.init(color: color)
+    convenience init(classification: String, position: SIMD3<Float>) {
+        self.init(classification: classification)
         self.position = position
     }
     
@@ -43,7 +43,6 @@ class CustomEntityA: Entity, HasModel, HasAnchoring, HasCollision {
 
 struct TextElements{
 
-  let initialText = "Cube"
   let extrusionDepth: Float = 0.001
   let font: MeshResource.Font = MeshResource.Font.systemFont(ofSize: 0.05, weight: .bold)
   let colour: UIColor = .white

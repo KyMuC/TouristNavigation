@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,11 +12,10 @@
 		132F4D1B264B3EFF00EC743F /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 132F4D1A264B3EFF00EC743F /* Experience.rcproject */; };
 		132F4D1D264B3F0100EC743F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132F4D1C264B3F0100EC743F /* Assets.xcassets */; };
 		132F4D20264B3F0100EC743F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 132F4D1F264B3F0100EC743F /* Preview Assets.xcassets */; };
+		13841811264DE6CB00EFC9EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13841810264DE6CB00EFC9EC /* GoogleService-Info.plist */; };
 		13F12EC4264BFAB0005CC2DB /* ObjectDetectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F12EC3264BFAB0005CC2DB /* ObjectDetectionService.swift */; };
-		13F12EC7264C323C005CC2DB /* StickyNoteEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F12EC6264C323C005CC2DB /* StickyNoteEntity.swift */; };
-		13F12ECA264C32AB005CC2DB /* ScreenSpaceComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F12EC9264C32AB005CC2DB /* ScreenSpaceComponent.swift */; };
-		13F12ECD264C37C8005CC2DB /* StickyNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F12ECC264C37C8005CC2DB /* StickyNoteView.swift */; };
-		4B76E349264DCFC200B5CB6C /* CustomEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76E348264DCFC200B5CB6C /* CustomEntity.swift */; };
+		4B76E349264DCFC200B5CB6C /* TextEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B76E348264DCFC200B5CB6C /* TextEntity.swift */; };
+		A40450433573960D31F4FE86 /* Pods_TouristNavigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DCC5633EC70CD1CD6799DC /* Pods_TouristNavigation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +26,12 @@
 		132F4D1C264B3F0100EC743F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		132F4D1F264B3F0100EC743F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		132F4D21264B3F0100EC743F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13841810264DE6CB00EFC9EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		13F12EC3264BFAB0005CC2DB /* ObjectDetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionService.swift; sourceTree = "<group>"; };
-		13F12EC6264C323C005CC2DB /* StickyNoteEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyNoteEntity.swift; sourceTree = "<group>"; };
-		13F12EC9264C32AB005CC2DB /* ScreenSpaceComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSpaceComponent.swift; sourceTree = "<group>"; };
-		13F12ECC264C37C8005CC2DB /* StickyNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyNoteView.swift; sourceTree = "<group>"; };
-		4B76E348264DCFC200B5CB6C /* CustomEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEntity.swift; sourceTree = "<group>"; };
+		35DCC5633EC70CD1CD6799DC /* Pods_TouristNavigation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TouristNavigation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B76E348264DCFC200B5CB6C /* TextEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntity.swift; sourceTree = "<group>"; };
+		895F7DF66064B78BA49B4C45 /* Pods-TouristNavigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouristNavigation.debug.xcconfig"; path = "Target Support Files/Pods-TouristNavigation/Pods-TouristNavigation.debug.xcconfig"; sourceTree = "<group>"; };
+		8F38E6B687C7C5B583B05989 /* Pods-TouristNavigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TouristNavigation.release.xcconfig"; path = "Target Support Files/Pods-TouristNavigation/Pods-TouristNavigation.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A40450433573960D31F4FE86 /* Pods_TouristNavigation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1288C4B4B029555E93C9FE68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35DCC5633EC70CD1CD6799DC /* Pods_TouristNavigation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		132F4D0A264B3EFE00EC743F = {
 			isa = PBXGroup;
 			children = (
 				132F4D15264B3EFE00EC743F /* TouristNavigation */,
 				132F4D14264B3EFE00EC743F /* Products */,
+				1B0201C866235D7880D374FC /* Pods */,
+				1288C4B4B029555E93C9FE68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,8 +75,6 @@
 		132F4D15264B3EFE00EC743F /* TouristNavigation */ = {
 			isa = PBXGroup;
 			children = (
-				13F12ECB264C37AA005CC2DB /* Views */,
-				13F12EC8264C327E005CC2DB /* Components */,
 				13F12EC5264C3203005CC2DB /* Entities */,
 				13F12EC2264BFA8F005CC2DB /* Services */,
 				132F4D16264B3EFE00EC743F /* AppDelegate.swift */,
@@ -73,6 +82,7 @@
 				132F4D1A264B3EFF00EC743F /* Experience.rcproject */,
 				132F4D1C264B3F0100EC743F /* Assets.xcassets */,
 				132F4D21264B3F0100EC743F /* Info.plist */,
+				13841810264DE6CB00EFC9EC /* GoogleService-Info.plist */,
 				132F4D1E264B3F0100EC743F /* Preview Content */,
 			);
 			path = TouristNavigation;
@@ -97,26 +107,18 @@
 		13F12EC5264C3203005CC2DB /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				13F12EC6264C323C005CC2DB /* StickyNoteEntity.swift */,
+				4B76E348264DCFC200B5CB6C /* TextEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		13F12EC8264C327E005CC2DB /* Components */ = {
+		1B0201C866235D7880D374FC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				13F12EC9264C32AB005CC2DB /* ScreenSpaceComponent.swift */,
+				895F7DF66064B78BA49B4C45 /* Pods-TouristNavigation.debug.xcconfig */,
+				8F38E6B687C7C5B583B05989 /* Pods-TouristNavigation.release.xcconfig */,
 			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		13F12ECB264C37AA005CC2DB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				13F12ECC264C37C8005CC2DB /* StickyNoteView.swift */,
-				4B76E348264DCFC200B5CB6C /* CustomEntity.swift */,
-			);
-			path = Views;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,9 +128,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 132F4D24264B3F0100EC743F /* Build configuration list for PBXNativeTarget "TouristNavigation" */;
 			buildPhases = (
+				D87F63BC128640A6D88A35F0 /* [CP] Check Pods Manifest.lock */,
 				132F4D0F264B3EFE00EC743F /* Sources */,
 				132F4D10264B3EFE00EC743F /* Frameworks */,
 				132F4D11264B3EFE00EC743F /* Resources */,
+				C0D2F02FF6C3CC5B9E1FC392 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,10 +182,53 @@
 			files = (
 				132F4D20264B3F0100EC743F /* Preview Assets.xcassets in Resources */,
 				132F4D1D264B3F0100EC743F /* Assets.xcassets in Resources */,
+				13841811264DE6CB00EFC9EC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C0D2F02FF6C3CC5B9E1FC392 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TouristNavigation/Pods-TouristNavigation-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TouristNavigation/Pods-TouristNavigation-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TouristNavigation/Pods-TouristNavigation-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D87F63BC128640A6D88A35F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TouristNavigation-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		132F4D0F264B3EFE00EC743F /* Sources */ = {
@@ -190,12 +237,9 @@
 			files = (
 				132F4D19264B3EFE00EC743F /* ContentView.swift in Sources */,
 				132F4D17264B3EFE00EC743F /* AppDelegate.swift in Sources */,
-				13F12ECD264C37C8005CC2DB /* StickyNoteView.swift in Sources */,
 				13F12EC4264BFAB0005CC2DB /* ObjectDetectionService.swift in Sources */,
 				132F4D1B264B3EFF00EC743F /* Experience.rcproject in Sources */,
-				4B76E349264DCFC200B5CB6C /* CustomEntity.swift in Sources */,
-				13F12ECA264C32AB005CC2DB /* ScreenSpaceComponent.swift in Sources */,
-				13F12EC7264C323C005CC2DB /* StickyNoteEntity.swift in Sources */,
+				4B76E349264DCFC200B5CB6C /* TextEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,19 +364,20 @@
 		};
 		132F4D25264B3F0100EC743F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 895F7DF66064B78BA49B4C45 /* Pods-TouristNavigation.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TouristNavigation/Preview Content\"";
-				DEVELOPMENT_TEAM = 7KMB8NCR6F;
+				DEVELOPMENT_TEAM = GQ2A475C8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TouristNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.adsoshnikov.TouristNavigation;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kymuc.TouristNavigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -341,19 +386,20 @@
 		};
 		132F4D26264B3F0100EC743F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F38E6B687C7C5B583B05989 /* Pods-TouristNavigation.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TouristNavigation/Preview Content\"";
-				DEVELOPMENT_TEAM = 7KMB8NCR6F;
+				DEVELOPMENT_TEAM = GQ2A475C8K;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = TouristNavigation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.adsoshnikov.TouristNavigation;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.kymuc.TouristNavigation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
