@@ -33,6 +33,7 @@ class ObjectDetectionService {
                     let code = FunctionsErrorCode(rawValue: error.code)
                     let message = error.localizedDescription
                     let details = error.userInfo[FunctionsErrorDetailsKey]
+                    print("Code: \(code)\nMessage: \(message)\nDetails: \(details)")
                 }
                 // ...
             }
@@ -47,6 +48,7 @@ class ObjectDetectionService {
                 //for labelObj in labelArray {
                 guard let landmarkName = labelObj!["description"] else {
                     self.complete(.failure(RecognitionError.requestError))
+                    print("No description")
                     return
                 }
                 let entityId = labelObj!["mid"]
@@ -56,6 +58,7 @@ class ObjectDetectionService {
                 
                 guard let vertices = (bounds as? [String:Any])?["vertices"] as? [[String:Double]] else {
                     self.complete(.failure(RecognitionError.requestError))
+                    print("No vertices")
                     return
                 }
                 
