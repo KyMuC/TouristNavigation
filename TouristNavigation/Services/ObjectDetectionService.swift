@@ -18,8 +18,8 @@ class ObjectDetectionService {
     func detect (on request: Request, completion: @escaping (Result<Response, Error>) -> Void) {
         self.completion = completion
         
-        let uiImage = UIImage(request.pixelBuffer)
-        guard let imageData = uiImage.jpegData(compressionQuality: 1.0) else { return }
+        let uiImage = UIImage(pixelBuffer: request.pixelBuffer)
+        guard let imageData = uiImage!.jpegData(compressionQuality: 1.0) else { return }
         let base64encodedImage = imageData.base64EncodedString()
         
         let requestData = [
@@ -45,31 +45,31 @@ class ObjectDetectionService {
                     return aScore < bScore
                 }
                 //for labelObj in labelArray {
-                guard let landmarkName = labelObj["description"] else {
-                    complete(.failure(.requestError))
+                guard let landmarkName = labelObj!["description"] else {
+                    self.complete(.failure(RecognitionError.requestError))
                     return
                 }
-                let entityId = labelObj["mid"]
-                let score = labelObj["score"]
-                let bounds = labelObj["boundingPoly"]
+                let entityId = labelObj!["mid"]
+                let score = labelObj!["score"]
+                let bounds = labelObj!["boundingPoly"]
                 
                 
-                guard let vertices = (bounds as? [String:Any])?["vertices"] as? [[String:Int]] else {
-                    complete(.failure(.requestError))
+                guard let vertices = (bounds as? [String:Any])?["vertices"] as? [[String:Double]] else {
+                    self.complete(.failure(RecognitionError.requestError))
                     return
                 }
                 
-                let centerPoint = CGPoint(x: (Double(vertices[0]["x"]) + Double(vertices[1]["x"]))/2, y: (Double(vertices[0]["y"]) + Double(vertices[2]["y"]))/2)
+                let centerPoint = CGPoint(x: (vertices[0]["x"]! + vertices[1]["x"]!)/2, y: (vertices[0]["y"]! + vertices[2]["y"]!)/2)
                 
-                let response = Response(centerPoint: centerPoint, classification: landmarkName)
-                complete(.success(response))
+                let response = Response(centerPoint: centerPoint, classification: landmarkName as! String)
+                self.complete(.success(response))
                 // Multiple locations are possible, e.g., the location of the depicted
                 // landmark and the location the picture was taken.
-                guard let locations = labelObj["locations"] as? [[String: [String: Any]]] else { continue }
-                for location in locations {
-                    let latitude = location["latLng"]?["latitude"]
-                    let longitude = location["latLng"]?["longitude"]
-                }
+//                guard let locations = labelObj!["locations"] as? [[String: [String: Any]]] else { continue }
+//                for location in locations {
+//                    let latitude = location["latLng"]?["latitude"]
+//                    let longitude = location["latLng"]?["longitude"]
+//                }
                 //}
             }
         }

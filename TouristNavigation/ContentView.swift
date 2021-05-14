@@ -32,10 +32,10 @@ struct ARViewContainer: UIViewRepresentable {
         
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { timer in
             guard let capturedImage = arView.session.currentFrame?.capturedImage else { return }
-            objectDetectionService.detect(on: .init(pixelBuffer: capturedImage)) {
-                [weak self] result in
-                
-                guard let self = self else { return }
+            objectDetectionService.detect(on: .init(pixelBuffer: capturedImage)) { result in
+//                [weak self] result in
+//
+//                guard let self = self else { return }
                 
                 switch result {
                 case .success(let response):
