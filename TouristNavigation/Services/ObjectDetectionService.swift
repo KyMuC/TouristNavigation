@@ -24,21 +24,25 @@ class ObjectDetectionService {
         
         let requestData = [
             "image": ["content": base64encodedImage],
-            "features": ["maxResults": 5, "type": "LANDMARK_DETECTION"]
-        ]
+            "features": [["maxResults": 5, "type": "LANDMARK_DETECTION"]]
+        ] as [String : Any]
         
+        //print(base64encodedImage)
         functions.httpsCallable("annotateImage").call(requestData) { (result, error) in
             if let error = error as NSError? {
                 if error.domain == FunctionsErrorDomain {
                     let code = FunctionsErrorCode(rawValue: error.code)
                     let message = error.localizedDescription
                     let details = error.userInfo[FunctionsErrorDetailsKey]
-                    print("Code: \(code)\nMessage: \(message)\nDetails: \(details)")
+                    print("Code: \(error.code)\nMessage: \(message)\nDetails: \(details)")
                 }
                 // ...
             }
+            
+            guard let data = result?.data as? [Any] else {return}
+            
             // Function completed succesfully
-            if let labelArray = (result?.data as? [String: Any])?["landmarkAnnotations"] as? [[String:Any]] {
+            if let labelArray = (data[0] as? [String: Any])?["landmarkAnnotations"] as? [[String:Any]] {
                 
                 let labelObj = labelArray.max { a, b in
                     let aScore = a["score"] as! Double
@@ -46,7 +50,7 @@ class ObjectDetectionService {
                     return aScore < bScore
                 }
                 //for labelObj in labelArray {
-                guard let landmarkName = labelObj!["description"] else {
+                guard let landmarkName = labelObj?["description"] else {
                     self.complete(.failure(RecognitionError.requestError))
                     print("No description")
                     return
